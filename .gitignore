@@ -1,0 +1,6 @@
+*.o
+*~
+*#
+last.kumac
+paw.metafile
+mc_hms_single
