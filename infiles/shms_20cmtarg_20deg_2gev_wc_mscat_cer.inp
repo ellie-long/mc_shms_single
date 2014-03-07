@@ -1,19 +1,14 @@
 !------------------------------------------------------------------------------
 ! Input file for MC_SMS_SINGLE 					
-! Default: 8 GeV electrons, 90 deg scattering angle, 30 cm vertex,
-!         -10%<delta<+22%
-! Nominal target lengths: 10cm, 20cm, 30cm (see HallC-doc-466 for further 
-! details on extended target acceptance and HallC-doc-465 and HallC-doc-16
-! for information on collimator and solid angle).
 !------------------------------------------------------------------------------
      100000	Monte-Carlo trials
      2000	Spectrometer momentum (in MeV/c)
      20.0	Spectrometer angle (in degrees)C
     -15.0	M.C. DP/P  down limit 
      30.0	M.C. DP/P  up   limit 
-    -55.0	M.C. Theta down limit (mr)
+    -55.0	M.C. Theta ( dy/dz) down limit (mr)
      55.0	M.C. Theta down limit (mr)
-    -50.0	M.C. Phi   down limit (mr)
+    -50.0	M.C. Phi (dx/dz)  down limit (mr)
      50.0	M.C. Phi   down limit (mr)C
      0.0	Horiz beam spot size in cm (Full width of +/- 3 sigma)
      0.0	Vert  beam spot size in cm (Full width of +/- 3 sigma)

@@ -1,23 +1,9 @@
 	program mc_shms_single
 
-C CHANGES FOR OPTICS TESTING:
-C 1. Remove target multiple scattering/energy loss
-
 C+______________________________________________________________________________
 !
-! Monte-Carlo of HMS spectrometer using uniform illumination.
+! Monte-Carlo of SHMS spectrometer using uniform illumination.
 !   This version uses TRANSPORT right-handed coordinate system.
-!
-! Author: David Potterveld, March-1993
-!
-! Modification History:
-!
-!  11-Aug-1993	(D. Potterveld) Modified to use new transformation scheme in
-!		which each transformation begins at the pivot.
-!
-!  19-AUG-1993  (D. Potterveld) Modified to use COSY INFINITY transformations.
-!
-!  NOV 2009 Updated SHMS (T.Horn)
 C-______________________________________________________________________________
 
 	implicit none
@@ -170,12 +156,6 @@ C
 	shmsSTOP_Q3_mid	= 0
 	shmsSTOP_Q3_mex	= 0
 	shmsSTOP_Q3_out	= 0
-c	shmsSTOP_Q3_out1	= 0
-c	shmsSTOP_Q3_out2	= 0
-c	shmsSTOP_Q3_out3	= 0
-c	shmsSTOP_Q3_out4	= 0
-c	shmsSTOP_Q3_out5	= 0
-c	shmsSTOP_Q3_out6	= 0
 	shmsSTOP_D1_in	= 0
         shmsSTOP_D1_flr = 0
 	shmsSTOP_D1_men = 0
@@ -214,17 +194,9 @@ C Initialize HBOOK/NTUPLE if used.
 	  call hlimit(pawc_size)
 	  filename = 'worksim/'//rawname(1:last_char(rawname))//'.rzdat'
 
-cmkj          iquest(10) = 256000
-cmkj	  iquest(10) = 510000
-! see for example
-!   http://wwwasd.web.cern.ch/wwwasd/cgi-bin/listpawfaqs.pl/7
-! the file size is limited to ~260M no matter how I change iquest !
-cmkj	  call hropen(30,'HUT',filename,'NQ',4096,i) !CERNLIB
 	  call hropen(30,'HUT',filename,'N',1024,i) !CERNLIB
  
 	  if (i.ne.0) then
-! TH - use "write" instead of "type" for gfortran. Change this everywhere below
-!	    type *,'HROPEN error: istat = ',i
 	    write(*,*),'HROPEN error: istat = ',i
 	    stop
 	  endif
@@ -378,8 +350,6 @@ C------------------------------------------------------------------------------C
 
 	stime = secnds(zero)
 
-! TH - use "Itrial" instead of "trial" for gfortran. Somehow the stringlib.f
-! function does not type cast string to integer otherwise.
           itime=time8()
    	  call ctime(itime,timestring)
 	  call srand(itime)
